@@ -1,0 +1,2 @@
+[workspace]
+members = ["xmas_tree_player", "xmas_tree_gen"]
