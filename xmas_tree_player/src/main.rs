@@ -276,7 +276,9 @@ fn sequence_animation(
         let mat = materials.get_mut(mat_handle).unwrap();
         let mut color = current_frame.colors[bulb.index].as_hlsa_f32();
         if bulb.inner {
-            color[2] = (color[2] + 0.5).min(1.0);
+            let light_color = current_frame.colors[bulb.index] + Color::rgb(0.25, 0.25, 0.25);
+            color = light_color.as_hlsa_f32();
+            color[2] = (color[2] + 0.25).min(1.0);
         } else {
             color[1] = (color[1] * 2.0).min(1.0);
             color[3] = color[2] * 0.5;
